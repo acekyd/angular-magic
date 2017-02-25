@@ -12,5 +12,12 @@
     "dev"
   ],
   "author": "acekyd",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8",
+    "angular-material": "^0.11.4",
+    "angular-ui-router": "^0.2.18"
+  }
 }

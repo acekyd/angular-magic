@@ -4,13 +4,19 @@
 
 	angular
 		.module("ngClassifieds")
-		.controller("classifiedsCtrl", function($scope) {
+		.controller("classifiedsCtrl", function($scope, $http, classifiedsFactory, $mdSidenav) {
 
-			$scope.name = {
-				first: "Ryan",
-				last: "Chenkie"
-			};
+			classifiedsFactory.getClassifieds().then(function(classifieds) {
+				$scope.classifieds = classifieds.data;
+			})
 
-			$scope.message = "This is a message!";
+			$scope.openSidebar = function() {
+				$mdSidenav('left').open();
+			}
+
+			$scope.closeSidebar = function() {
+				$mdSidenav('left').close();
+			}
+
 		});
 })();

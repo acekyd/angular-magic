@@ -4,7 +4,7 @@
 
 	angular
 		.module("ngClassifieds")
-		.controller("classifiedsCtrl", function($scope, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) {
+		.controller("classifiedsCtrl", function($scope, $state, $http, classifiedsFactory, $mdSidenav, $mdToast, $mdDialog) {
 			var vm = this;
 
 			vm.openSidebar = openSidebar;
@@ -30,7 +30,7 @@
 			}
 
 			function openSidebar() {
-				$mdSidenav('left').open();
+				$state.go('classifieds.new');
 			}
 
 			function closeSidebar() {

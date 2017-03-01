@@ -23,6 +23,10 @@
 				vm.categories = getCategories(vm.classifieds);
 			})
 
+			$scope.$on('myMessage', function(event, message){
+				console.log(message);
+			})
+
 			var contact = {
 				name: "Ace",
 				phone: "234 706 115 7137",

@@ -1,9 +1,10 @@
-		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-open="vm.sideNavOpen">
 			<md-toolbar>
 				<h1 class="md-toolbar-tools" >Add a Classified</h1>
 			</md-toolbar>
 
 			<md-content layout-padding>
+			<md-button ng-click="vm.sendMessage()">Send Message</md-button>
 			    <form>
 			      <md-input-container>
 			        <label for="title">Title</label>

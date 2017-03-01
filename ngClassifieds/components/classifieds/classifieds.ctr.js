@@ -23,15 +23,15 @@
 				vm.categories = getCategories(vm.classifieds);
 			})
 
-			$scope.$on('myMessage', function(event, message){
-				console.log(message);
+			$scope.$on('newClassified', function(event, classified) {
+				classified.id = vm.classifieds.length + 1;
+				vm.classifieds.push(classified);
+				showToast("Classified saved");
 			})
 
-			var contact = {
-				name: "Ace",
-				phone: "234 706 115 7137",
-				email: "acekyd@ymail.com"
-			}
+			$scope.$on('editSaved', function(event, message) {
+				showToast(message);
+			})
 
 			function openSidebar() {
 				$state.go('classifieds.new');
@@ -53,9 +53,10 @@
 			}
 
 			function editClassified(classified) {
-				vm.editing = true;
-				openSidebar();
-				vm.classified = classified;
+				$state.go('classifieds.edit', {
+					id: classified.id,
+					classified: classified
+				});
 			}
 
 			function saveEdit() {

@@ -7,6 +7,7 @@
 		.controller('newClassifiedsCtrl', function($scope, $state, $mdSidenav,  $timeout, $mdDialog, classifiedsFactory) {
 			var vm = this;
 			vm.closeSidebar = closeSidebar;
+			vm.saveClassified = saveClassified;
 
 			$timeout(function() {
 				$mdSidenav('left').open();
@@ -26,8 +27,18 @@
 				vm.sidenavOpen = false;
 			}
 
-			vm.sendMessage = function() {
-				$scope.$emit('myMessage', 'This is a message ');
+			function saveClassified(classified) {
+				if(classified)
+				{
+
+					classified.contact = {
+						name: "Ace",
+						phone: "234 706 115 7137",
+						email: "acekyd@ymail.com"
+					}
+					$scope.$emit('newClassified', classified);
+					vm.sidenavOpen = false;
+				}
 			}
 
 		});

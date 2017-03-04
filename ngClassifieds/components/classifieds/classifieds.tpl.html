@@ -36,36 +36,6 @@
 
 		<ui-view></ui-view>
 
-		<md-content class="md-padding" layout="row" layout-wrap>
-			<md-card flex="30" ng-repeat="classified in vm.classifieds | filter: classifiedsFilter | filter: category" class="classified">
-				<img ng-src="{{ classified.image }}" alt="Ace and Prosper">
-				<md-card-content>
-					<div class="classified-info" ng-show="!showContacts">
-						<h2 class="md-title">{{classified.title}}</h2>
-						<h2>{{classified.posted | date:'longDate' }}</h2>
-						<h3>{{classified.price | currency}}</h3>
-						<p>{{classified.description}}</p>
-					</div>
-					<div class="classified-contact" ng-show="showContacts">
-						<p><md-icon class="mdi mdi-account"></md-icon> {{ classified.contact.name }} </p>
-						<p><md-icon class="mdi mdi-phone"></md-icon> {{ classified.contact.phone }} </p>
-						<p><md-icon class="mdi mdi-email"></md-icon> {{ classified.contact.email }} </p>
-					</div>
-
-					<div layout="row">
-						<md-button ng-show="!showContacts" ng-click="showContacts = true">Contact</md-button>
-						<md-button ng-show="showContacts" ng-click="showContacts = false">Details</md-button>
-						<md-button ng-show="!showAdmin"ng-click="showAdmin = true">Admin</md-button>
-						<md-button ng-show="showAdmin" ng-click="showAdmin = false">Close</md-button>
-					</div>
-
-					<div class="classified-admin" ng-if="showAdmin">
-						<h3>Admin</h3>
-						<div layout="row">
-							<md-button ng-click="vm.editClassified(classified)" class="md-primary">Edit</md-button>
-							<md-button ng-click="vm.deleteClassified(classified, $event)" class="md-warn">Delete</md-button>
-						</div>
-					</div>
-			</md-card-content>
-			</md-card>
+		<md-content>
+			<classified-card classifieds="vm.classifieds" classifieds-filter="classifiedsFilter" category="category" class="md-padding" layout="row" layout-wrap></classified-card>
 		</md-content>
